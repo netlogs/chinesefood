@@ -4,7 +4,7 @@ featured: true
 title: "Chinese Hot Pot (火锅)"
 description: "Hot Pot is a Chinese social dining experience where diners cook fresh ingredients in simmering flavored broths at the table."
 image: {
-    src: "/src/assets/best/hotpot.png",  # 需要确保这个图片存在
+    src: "/public/best-chinese-food/hotpot.png",  # 需要确保这个图片存在
     alt: "Chinese Hot Pot with various ingredients and broths"
 }
 category: "Traditional Dishes"
@@ -19,7 +19,7 @@ regionDescription: "While hot pot originated in northern China during the Tang D
 
 # Chinese Hot Pot (火锅 | Huǒguō): The Ultimate Guide to China's Favorite Social Dining Experience
 
-![hotpot](../../assets/best/hotpot.png)
+![hotpot](/public/best-chinese-food/hotpot.png)
 
 ## What is Hot Pot?
 Chinese hot pot is an interactive dining experience where diners cook fresh ingredients in a simmering pot of flavored broth at the table. Think of it as a Chinese fondue—but instead of cheese, you have rich, flavorful broths that can range from mild to explosively spicy.
