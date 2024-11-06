@@ -1,0 +1,27 @@
+---
+import Container from "@components/container.astro";
+import Breadcrumb from "@components/breadcrumb.astro";
+import Layout from "./Layout.astro";
+import RelatedDishes from "@components/related-dishes.astro";
+
+const { frontmatter, breadcrumbs } = Astro.props;
+---
+
+<Layout title={frontmatter.title}>
+  <Container>
+    <Breadcrumb items={breadcrumbs} />
+    <article class="max-w-4xl mx-auto mt-8">
+      <h1 class="text-4xl font-bold">{frontmatter.title}</h1>
+      <div class="prose prose-lg mt-6">
+        <slot />
+      </div>
+      {frontmatter.region && (
+        <div class="mt-8 p-4 bg-gray-50 rounded-lg">
+          <h3 class="text-xl font-semibold">Region: {frontmatter.region}</h3>
+          <p class="mt-2">{frontmatter.regionDescription}</p>
+        </div>
+      )}
+      <RelatedDishes category={frontmatter.category} currentSlug={frontmatter.slug} />
+    </article>
+  </Container>
+</Layout> 

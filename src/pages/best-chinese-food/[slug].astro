@@ -3,22 +3,28 @@ import { getCollection } from "astro:content";
 import Layout from "@layouts/Layout.astro";
 import Container from "@components/container.astro";
 
-// Generate a new path for every collection entry
 export async function getStaticPaths() {
-  const blogEntries = await getCollection("blog");
-  return blogEntries.map((entry) => ({
+  const entries = await getCollection("best-chinese-food");
+  return entries.map((entry) => ({
     params: { slug: entry.slug },
     props: { entry },
   }));
 }
 
-// Get the entry directly from the prop on render
 const { entry } = Astro.props;
 const { Content } = await entry.render();
 ---
 
 <Layout title={entry.data.title}>
   <Container>
+    <div class="text-left mt-8">
+      <a
+        href="/best-chinese-food"
+        class="bg-gray-100 px-5 py-3 rounded-md hover:bg-gray-200 transition"
+        >← Back to Best Chinese Food</a
+      >
+    </div>
+    <!-- 复用原有的文章详情页布局 -->
     <div class="mx-auto max-w-3xl mt-14">
       <span class="text-blue-400 uppercase tracking-wider text-sm font-medium">
         {entry.data.category}
@@ -53,9 +59,9 @@ const { Content } = await entry.render();
     </div>
     <div class="text-center mt-8">
       <a
-        href="/blog"
+        href="/best-chinese-food"
         class="bg-gray-100 px-5 py-3 rounded-md hover:bg-gray-200 transition"
-        >← Back to Blog</a
+        >← Back to Best Chinese Food</a
       >
     </div>
   </Container>

@@ -1,0 +1,76 @@
+---
+import { getCollection } from "astro:content";
+import { Picture } from "astro:assets";
+import Layout from "@layouts/Layout.astro";
+import Container from "@components/container.astro";
+import Sectionhead from "@components/sectionhead.astro";
+import { foodCultureTitle, foodCultureDescription } from "@config/info.astro";
+// 获取 custom-blog 集合
+const publishedEntries = await getCollection("food-culture", ({ data }) => {
+  return !data.draft && data.publishDate < new Date();
+});
+
+publishedEntries.sort(function (a, b) {
+  return b.data.publishDate.valueOf() - a.data.publishDate.valueOf();
+});
+---
+
+<Layout title={foodCultureTitle} description={foodCultureDescription}>
+  <Container>
+    <Sectionhead>
+      <Fragment slot="title">Food Culture</Fragment>
+      <Fragment slot="desc">Explore the best food culture from around the country</Fragment>
+    </Sectionhead>
+    <main class="mt-16">
+      <ul class="grid gap-16 max-w-4xl mx-auto">
+        {
+          publishedEntries.map((entry, index) => (
+            <li>
+              <a href={`/food-culture/${entry.slug}`}>
+                <!-- 复用原有的文章卡片布局 -->
+                <div class="grid md:grid-cols-2 gap-5 md:gap-10 items-center">
+                  <Picture
+                    src={entry.data.image.src}
+                    alt={entry.data.image.alt}
+                    sizes="(max-width: 800px) 100vw, 800px"
+                    width={800}
+                    height={600}
+                    loading={index <= 2 ? "eager" : "lazy"}
+                    decoding={index <= 2 ? "sync" : "async"}
+                    class="w-full rounded-md object-cover object-center bg-white"
+                  />
+                  <div>
+                    <span class="text-blue-400 uppercase tracking-wider text-sm font-medium">
+                      {entry.data.category}
+                    </span>
+
+                    <h2 class="text-3xl font-semibold leading-snug tracking-tight mt-1 ">
+                      {entry.data.title}
+                    </h2>
+
+                    <div class="mt-4">
+                      <h3 class="text-xl font-medium text-gray-700">Texture and Taste</h3>
+                      <p class="mt-2 text-gray-600">{entry.data.highlights}</p>
+                    </div>
+
+                    <div class="flex gap-2 mt-3">
+                      <span class="text-gray-400">
+                        {entry.data.author}
+                      </span>
+                      <span class="text-gray-400">• </span>
+                      <time
+                        class="text-gray-400"
+                        datetime={entry.data.publishDate.toISOString()}>
+                        {entry.data.publishDate.toDateString()}
+                      </time>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </main>
+  </Container>
+</Layout> 

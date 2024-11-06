@@ -1,0 +1,51 @@
+---
+import { getCollection } from "astro:content";
+import { Picture } from "astro:assets";
+import Link from "@components/ui/link.astro";
+
+const DISPLAY_LIMIT = 5;
+
+const featuredFood = await getCollection('best-chinese-food', ({ data }) => {
+  return !data.draft && data.featured === true;
+});
+
+const displayedFood = featuredFood.slice(0, DISPLAY_LIMIT);
+---
+
+<section class="mt-16">
+  <h2 class="text-4xl font-bold text-center mb-8 gradient-text">Popular Chinese Food</h2>
+  <div class="grid md:grid-cols-3 gap-10">
+    {displayedFood.map((item) => (
+      <a href={`/best-chinese-food/${item.slug}`} class="card group">
+        <div class="overflow-hidden rounded-lg">
+          <Picture
+            src={item.data.image.src}
+            alt={item.data.image.alt}
+            sizes="(max-width: 800px) 100vw, 400px"
+            width={400}
+            height={300}
+            class="w-full transition duration-300 group-hover:scale-105"
+          />
+        </div>
+        <h3 class="text-2xl font-semibold mt-4 text-text-primary">{item.data.title}</h3>
+        <p class="text-text-secondary mt-2">{item.data.description}</p>
+      </a>
+    ))}
+
+    <!-- Read More 卡片 -->
+    <a href="/city-guides" class="group">
+      <div class="overflow-hidden rounded-lg">
+        <div class="aspect-[4/3] flex flex-col items-center justify-center p-8 border-2 border-dashed border-gray-300 hover:border-primary transition-colors bg-gray-50 group-hover:bg-gray-100">
+          <h3 class="text-2xl font-semibold text-gray-600 group-hover:text-primary">Read More</h3>
+          <p class="text-slate-500 mt-2 text-center">Discover more delicious city guides</p>
+          <div class="mt-4 text-primary">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+            </svg>
+          </div>
+        </div>
+      </div>
+      <div class="h-[88px]"></div>
+    </a>
+  </div>
+</section> 

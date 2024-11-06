@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://your-custom-domain.com/sitemap-index.xml
+Sitemap: https://cfoods.com/sitemap-index.xml

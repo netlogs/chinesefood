@@ -1,18 +1,18 @@
 ---
 import Container from "@components/container.astro";
-import Cta from "@components/cta.astro";
-import Features from "@components/features.astro";
-import Hero from "@components/hero.astro";
-import Logos from "@components/logos.astro";
 import Layout from "@layouts/Layout.astro";
-import { title } from "@config/info.astro";
+import { homeTitle, homeDescription } from "@config/info.astro";
+import FeaturedFood from "@components/featured-food.astro";
+import CityHighlights from "@components/city-highlights.astro";
+import FoodCulture from "@components/food-culture.astro";
+import Hero from "@components/hero.astro";
 ---
 
-<Layout title={title}>
+<Layout title={homeTitle} description={homeDescription}>
   <Container>
     <Hero />
-    <Features />
-    <Logos />
-    <Cta />
+    <FeaturedFood />
+    <CityHighlights />
+    <FoodCulture />
   </Container>
 </Layout>

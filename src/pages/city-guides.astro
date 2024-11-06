@@ -4,36 +4,35 @@ import { Picture } from "astro:assets";
 import Layout from "@layouts/Layout.astro";
 import Container from "@components/container.astro";
 import Sectionhead from "@components/sectionhead.astro";
+import { cityGuidesTitle, cityGuidesDescription } from "@config/info.astro";
 
-// Filter blog entries with 'draft: false' & date before current date
-const publishedBlogEntries = await getCollection("blog", ({ data }) => {
+// 获取 custom-blog 集合
+const publishedEntries = await getCollection("city-guides", ({ data }) => {
   return !data.draft && data.publishDate < new Date();
 });
 
-// Sort content entries by publication date
-publishedBlogEntries.sort(function (a, b) {
+publishedEntries.sort(function (a, b) {
   return b.data.publishDate.valueOf() - a.data.publishDate.valueOf();
 });
 ---
 
-<Layout title="Blog">
+<Layout title={cityGuidesTitle} description={cityGuidesDescription}>
   <Container>
     <Sectionhead>
-      <Fragment slot="title">Our Blog</Fragment>
-      <Fragment slot="desc">
-        We write about building startups and thoughts going on our mind.
-      </Fragment>
+      <Fragment slot="title">City Guides</Fragment>
+      <Fragment slot="desc">Explore the best city guides from around the country</Fragment>
     </Sectionhead>
     <main class="mt-16">
       <ul class="grid gap-16 max-w-4xl mx-auto">
         {
-          publishedBlogEntries.map((blogPostEntry, index) => (
+          publishedEntries.map((entry, index) => (
             <li>
-              <a href={`/blog/${blogPostEntry.slug}`}>
+              <a href={`/city-guides/${entry.slug}`}>
+                <!-- 复用原有的文章卡片布局 -->
                 <div class="grid md:grid-cols-2 gap-5 md:gap-10 items-center">
                   <Picture
-                    src={blogPostEntry.data.image.src}
-                    alt={blogPostEntry.data.image.alt}
+                    src={entry.data.image.src}
+                    alt={entry.data.image.alt}
                     sizes="(max-width: 800px) 100vw, 800px"
                     width={800}
                     height={600}
@@ -43,22 +42,27 @@ publishedBlogEntries.sort(function (a, b) {
                   />
                   <div>
                     <span class="text-blue-400 uppercase tracking-wider text-sm font-medium">
-                      {blogPostEntry.data.category}
+                      {entry.data.category}
                     </span>
 
                     <h2 class="text-3xl font-semibold leading-snug tracking-tight mt-1 ">
-                      {blogPostEntry.data.title}
+                      {entry.data.title}
                     </h2>
+                    
+                    <div class="mt-4">
+                      <h3 class="text-xl font-medium text-gray-700">Texture and Taste</h3>
+                      <p class="mt-2 text-gray-600">{entry.data.highlights}</p>
+                    </div>
 
                     <div class="flex gap-2 mt-3">
                       <span class="text-gray-400">
-                        {blogPostEntry.data.author}
+                        {entry.data.author}
                       </span>
                       <span class="text-gray-400">• </span>
                       <time
                         class="text-gray-400"
-                        datetime={blogPostEntry.data.publishDate.toISOString()}>
-                        {blogPostEntry.data.publishDate.toDateString()}
+                        datetime={entry.data.publishDate.toISOString()}>
+                        {entry.data.publishDate.toDateString()}
                       </time>
                     </div>
                   </div>
@@ -70,4 +74,4 @@ publishedBlogEntries.sort(function (a, b) {
       </ul>
     </main>
   </Container>
-</Layout>
+</Layout> 

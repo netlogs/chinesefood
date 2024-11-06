@@ -1,8 +1,100 @@
-.gradient-text {
-    background: linear-gradient(to right, #4a90e2, #ee3e87);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+/* 中国风配色系统 */
+:root {
+  /* 主色调 */
+  --color-primary: #e45b88;      /* 主要强调色 - 中国红 */
+  --color-secondary: #4a90e2;    /* 次要强调色 - 青花蓝 */
+  --color-accent: #ee3e87;       /* 点缀色 - 桃粉色 */
+  
+  /* 文字颜色 */
+  --color-text-primary: #2c3e50; /* 主要文字 */
+  --color-text-secondary: #666;  /* 次要文字 */
+  --color-text-light: #999;      /* 浅色文字 */
+  
+  /* 背景颜色 */
+  --color-bg-primary: #ffffff;   /* 主背景 */
+  --color-bg-secondary: #f8f9fa; /* 次要背景 */
+  --color-bg-accent: #fff8f8;    /* 强调背景 */
+  
+  /* 边框颜色 */
+  --color-border: #eaeaea;
+  --color-border-light: #f0f0f0;
+  
+  /* 交互状态颜色 */
+  --color-hover: #d14d7a;        /* 悬停状态 */
+  --color-active: #c0446d;       /* 激活状态 */
+  
+  /* 阴影 */
+  --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+  --shadow-md: 0 4px 6px rgba(0,0,0,0.07);
+  --shadow-lg: 0 10px 15px rgba(0,0,0,0.1);
 }
-.text-colored {
-    color: #e45b88;
+
+/* 全局基础样式 */
+body {
+  color: var(--color-text-primary);
+  background-color: var(--color-bg-primary);
+  font-family: 'Inter Variable', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* 文字渐变效果 */
+.gradient-text {
+  background: linear-gradient(135deg, 
+    var(--color-primary) 0%,
+    var(--color-accent) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* 链接样式 */
+a {
+  color: var(--color-text-primary);
+  transition: all 0.3s ease;
+}
+
+a:hover {
+  color: var(--color-primary);
+}
+
+/* 按钮基础样式 */
+.btn {
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.btn-primary {
+  background-color: var(--color-primary);
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: var(--color-hover);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-secondary {
+  background-color: var(--color-secondary);
+  color: white;
+}
+
+.btn-secondary:hover {
+  background-color: #4180c9;
+  transform: translateY(-1px);
+}
+
+/* 卡片样式 */
+.card {
+  background: var(--color-bg-primary);
+  border-radius: 0.5rem;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: var(--shadow-md);
 }

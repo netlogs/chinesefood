@@ -4,10 +4,12 @@ import Footer from "@components/footer.astro";
 import Navbar from "@components/navbar/navbar.astro";
 import "@fontsource-variable/inter/index.css";
 import "@fontsource-variable/bricolage-grotesque";
-import { brandName, description, iconHref } from "@config/info.astro";
+import { brandName, iconHref } from "@config/info.astro";
+import "../styles/global.css";
 
 export interface Props {
   title: string;
+  description?: string;
 }
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
@@ -17,10 +19,10 @@ const resolvedImageWithDomain = new URL(
   Astro.site,
 ).toString();
 
-const { title } = Astro.props;
+const { title, description } = Astro.props;
 
 const makeTitle = title
-  ? title + " | " + brandName
+  ? title
   : "Astroship - Starter Template for Astro with Tailwind CSS";
 ---
 
@@ -46,11 +48,11 @@ const makeTitle = title
         basic: {
           url: canonicalURL,
           type: "website",
-          title: `aaaaaaaaaa`,
+          title: `cfoods - chinese food`,
           image: resolvedImageWithDomain,
         },
         image: {
-          alt: "Astroship Homepage Screenshot",
+          alt: "cfoods - chinese food",
         },
       }}
     />
@@ -59,10 +61,10 @@ const makeTitle = title
       {
         "@context": "https://schema.org",
         "@type": "WebSite",
-        "name": "aaaaaaaaaa",
-        "url": "aaaaaaaaaa",
-        "description": "aaaaaaaaaa",
-        "inLanguage": "en",
+        "name": "chinese food ",
+        "url": "https://cfoods.com",
+        "description": "From street food to fine dining. Delicious Chinese food anywhere. Through food, feel the close connection with the world and appreciate the beauty of the world.",
+        "inLanguage": "en"
       }
     </script>
   </head>
@@ -79,6 +81,19 @@ const makeTitle = title
     </style>
     <div style="display: none;">
       <!-- add google tag code here -->
+      <!-- Google tag (gtag.js) -->
+      <script
+        async
+        src="https://www.googletagmanager.com/gtag/js?id=G-38E8J790ZL"></script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+          dataLayer.push(arguments);
+        }
+        gtag("js", new Date());
+
+        gtag("config", "G-38E8J790ZL");
+      </script>
     </div>
   </body>
 </html>
