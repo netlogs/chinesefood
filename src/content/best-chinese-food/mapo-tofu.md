@@ -10,7 +10,7 @@ image: {
 category: "best-chinese-food"
 author: "CFoods"
 highlights: "Mapo tofu, with its tongue-numbing spiciness and rich umami flavor, stands as one of the most famous dishes from Sichuan cuisine."
-publishDate: "2024-03-19"
+publishDate: "2024-11-07"
 tags: ["mapo-tofu", "chinese-cuisine", "sichuan-cuisine", "legendary-dish", "spicy-food"]
 region: "Sichuan Province"
 regionDescription: "Sichuan cuisine is renowned for its bold flavors and complex spiciness, with dishes ranging from mild to extremely spicy."

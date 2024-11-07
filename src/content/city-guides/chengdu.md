@@ -8,7 +8,7 @@ image: {
     alt: "Chengdu Food Guide"
 }
 highlights: "Chengdu, the capital of Sichuan province, earned its UNESCO City of Gastronomy status for good reason. This vibrant city offers an unparalleled food experience that combines bold flavors, historic traditions, and modern culinary innovations."
-publishDate: "2024-03-19"
+publishDate: "2024-11-07"
 tags: ["chengdu", "sichuan", "city-of-gastronomy", "food-guide", "chinese-cuisine"]
 category: "city-guides"
 author: "CFoods"

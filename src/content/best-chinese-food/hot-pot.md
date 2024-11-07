@@ -11,7 +11,7 @@ category: "Traditional Dishes"
 author: "CFoods"
 highlights: "Hot Pot is a Chinese social dining experience where diners cook fresh ingredients in simmering flavored broths at the table."
 restaurants: "Haidilao (海底捞), Little Sheep (小肥羊), The Dolar Shop (大渔铁板烧)"
-publishDate: "2024-03-19"
+publishDate: "2024-11-07"
 tags: ["hotpot", "chinese-cuisine", "social-dining", "traditional-food", "sichuan"]
 region: "Nationwide"
 regionDescription: "While hot pot originated in northern China during the Tang Dynasty, it has evolved into a nationwide phenomenon with distinct regional variations, from Sichuan's spicy broths to Guangdong's seafood-focused versions."
