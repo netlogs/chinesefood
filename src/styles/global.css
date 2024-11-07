@@ -27,6 +27,19 @@
   --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
   --shadow-md: 0 4px 6px rgba(0,0,0,0.07);
   --shadow-lg: 0 10px 15px rgba(0,0,0,0.1);
+  
+  /* 添加新的渐变背景变量 */
+  --gradient-food-primary: linear-gradient(135deg, 
+    #fff5f5 0%,    /* 浅粉色 - 象征中国红 */
+    #fff8f0 50%,   /* 米白色 - 象征瓷器 */
+    #fffaf0 100%   /* 浅黄色 - 象征金色 */
+  );
+  
+  --gradient-food-secondary: linear-gradient(45deg,
+    rgba(228, 91, 136, 0.05) 0%,   /* 淡中国红 */
+    rgba(255, 170, 96, 0.05) 50%,   /* 淡橙色 */
+    rgba(255, 218, 185, 0.05) 100%  /* 淡米色 */
+  );
 }
 
 /* 全局基础样式 */
@@ -36,6 +49,7 @@ body {
   font-family: 'Inter Variable', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: var(--gradient-food-primary);
 }
 
 /* 文字渐变效果 */
@@ -97,4 +111,20 @@ a:hover {
 
 .card:hover {
   box-shadow: var(--shadow-md);
+}
+
+/* 为主要内容区域添加叠加渐变 */
+.main-content {
+  position: relative;
+}
+
+.main-content::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--gradient-food-secondary);
+  pointer-events: none;
 }
